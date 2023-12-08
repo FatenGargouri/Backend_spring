@@ -3,11 +3,12 @@ package com.example.demo.service.impliments;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.persistance.dao.ContactRepository; 
 import com.example.demo.persistance.entities.Contact;
 import com.example.demo.service.interfaces.IContact; 
-
+@Service
 public class ContactService implements IContact { 
     @Autowired
     ContactRepository contactRepository;

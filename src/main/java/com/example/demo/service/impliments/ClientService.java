@@ -3,11 +3,13 @@ package com.example.demo.service.impliments;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.persistance.dao.ClientRepository;
 import com.example.demo.persistance.entities.Client;
 import com.example.demo.service.interfaces.IClient;
 
+@Service
 public class ClientService implements IClient{
 	@Autowired
     ClientRepository clientRepository; 

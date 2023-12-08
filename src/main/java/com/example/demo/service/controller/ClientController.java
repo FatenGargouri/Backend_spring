@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.persistance.entities.Client;
 import com.example.demo.service.interfaces.IClient;
 
-
+@RestController
+@RequestMapping("/api/client")
 public class ClientController {
 
 	 @Autowired

@@ -3,11 +3,13 @@ package com.example.demo.service.impliments;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.persistance.dao.ReservationRepository; 
 import com.example.demo.persistance.entities.Reservation; 
 import com.example.demo.service.interfaces.IReservation;
 
+@Service
 public class ReservationService implements IReservation { 
 
     @Autowired

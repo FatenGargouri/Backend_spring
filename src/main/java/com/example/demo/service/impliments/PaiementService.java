@@ -3,11 +3,13 @@ package com.example.demo.service.impliments;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.persistance.dao.PaiementRepository; 
 import com.example.demo.persistance.entities.Paiement; 
 import com.example.demo.service.interfaces.IPaiement; 
 
+@Service
 public class PaiementService implements IPaiement { 
 
     @Autowired
