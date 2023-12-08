@@ -1,6 +1,7 @@
 package com.example.demo.service.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.persistance.entities.Contact;
 
@@ -14,5 +15,8 @@ public interface IContact {
     Contact findContactByName(String name); 
     int getQuantityOfContact(); 
     Contact getContactByIdContact(Long id);
+    List<Contact> getAllContacts();
+    Optional<Contact> getContactById(Long id);
+
 
 }

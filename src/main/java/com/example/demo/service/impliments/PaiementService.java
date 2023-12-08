@@ -1,11 +1,13 @@
 package com.example.demo.service.impliments;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.persistance.dao.PaiementRepository; 
+import com.example.demo.persistance.dao.PaiementRepository;
+import com.example.demo.persistance.entities.Contact;
 import com.example.demo.persistance.entities.Paiement; 
 import com.example.demo.service.interfaces.IPaiement; 
 
@@ -51,6 +53,16 @@ public class PaiementService implements IPaiement {
     @Override
     public Paiement getPaiementByIdPaiement(Long id) { 
         return null;
+    }
+    
+    @Override
+    public List<Paiement> getAllPaiements() {
+        return paiementRepository.findAll();
+    }
+
+    @Override
+    public Optional<Paiement> getPaiementById(Long id) {
+        return paiementRepository.findById(id);
     }
 }
 

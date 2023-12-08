@@ -29,7 +29,15 @@ public class Contact implements Serializable{
 			this.tel = tel;
 		}
 	  
-	  public Long getId() {
+	  
+	  
+	  public Contact() {
+		super();
+	}
+
+
+
+	public Long getId() {
 		return id;
 	}
 

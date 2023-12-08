@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class Paiement implements Serializable {
 	@Id 
@@ -15,7 +17,14 @@ public class Paiement implements Serializable {
 	  private Long montant;
 	  private String type_carte;
 	  private String numero_carte;
+	  @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
 	  private LocalDateTime date_expiration_carte;
+	  
+	  
+
+	public Paiement() {
+		super();
+	}
 
 	public Paiement(Long id, Long montant, String type_carte, String numero_carte,
 			LocalDateTime date_expiration_carte) {

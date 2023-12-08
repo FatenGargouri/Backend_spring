@@ -20,6 +20,12 @@ public class Client implements Serializable{
 	  private String adresse;
 	  private String tel;
 	  
+	  
+	  
+	public Client() {
+		super();
+	}
+
 	public Client(Long id, String nom, String email, String adresse, String tel) {
 		super();
 		this.id = id;

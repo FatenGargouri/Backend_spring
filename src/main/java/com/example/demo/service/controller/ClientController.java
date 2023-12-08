@@ -1,15 +1,22 @@
 package com.example.demo.service.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.persistance.entities.Client;
+
 import com.example.demo.service.interfaces.IClient;
 
 @RestController
@@ -47,6 +54,41 @@ public class ClientController {
 	        clientService.deleteClient(id); // Changed from deletePatient to deleteClient
 	        return true;
 	    }
+	    
+	    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+		List<Client> getAllClients() {
+		    return clientService.getAllClients();
+		}
+		
+		@PutMapping("/{id}")
+		public ResponseEntity<?> updateClient(@PathVariable Long id, @RequestBody Client updatedClient) {
+		    System.out.println("******update **********");
+
+		    // Retrieve the existing patient by ID
+		    Optional<Client> existingClientOptional = clientService.getClientById(id);
+
+		    if (existingClientOptional.isPresent()) {
+		        Client existingClient = existingClientOptional.get();
+
+		        // Update the necessary fields
+		        existingClient.setNom(updatedClient.getNom());
+		        existingClient.setEmail(updatedClient.getEmail());
+		        existingClient.setAdresse(updatedClient.getAdresse());
+		        existingClient.setTel(updatedClient.getTel());
+
+		        // Save the updated patient
+		        Client updatedClientResult = clientService.updateClient(existingClient);
+
+		        // Return the updated patient in the response
+		        return ResponseEntity.ok(updatedClientResult);
+		    } else {
+		        // Patient not found, return 404
+		        return ResponseEntity.notFound().build();
+		    }
+		}
+
+
+
 	
 	
 }

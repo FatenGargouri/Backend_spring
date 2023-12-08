@@ -1,6 +1,7 @@
 package com.example.demo.service.impliments;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.persistance.dao.ReservationRepository; 
 import com.example.demo.persistance.entities.Reservation; 
 import com.example.demo.service.interfaces.IReservation;
+
+
 
 @Service
 public class ReservationService implements IReservation { 
@@ -50,4 +53,14 @@ public class ReservationService implements IReservation {
     public Reservation getReservationByIdReservation(Long id) { 
         return null;
     }
+    @Override
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
+    }
+
+    @Override
+    public Optional<Reservation> getReservationById(Long id) {
+        return reservationRepository.findById(id);
+    }
+
 }

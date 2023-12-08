@@ -1,10 +1,9 @@
 package com.example.demo.service.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.persistance.entities.Client;
-
-
 
 public interface IClient {
 	
@@ -16,5 +15,7 @@ public interface IClient {
      Client findClientByName(String name);
      int getQuantityOfClient();
      Client getClientByIdClient(Long id);
+	 List<Client> getAllClients();
+	 Optional<Client> getClientById(Long id);
 
 }

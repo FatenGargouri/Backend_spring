@@ -33,6 +33,13 @@ public class Agence implements Serializable{
 		this.date_creation = date_creation;
 		this.description = description;
 	}
+	
+	
+	public Agence() {
+		super();
+	}
+
+
 	public Long getId() {
 		return id;
 	}
