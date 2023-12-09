@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
@@ -56,5 +59,19 @@ public class Reservation implements Serializable{
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 	}
+	
+	@ManyToOne
+    @JoinColumn(name = "voiture_id")
+    private Voiture voiture;
+  
+  @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+  
+  @OneToOne(mappedBy = "reservation")
+    private Facture facture;
+
+   @OneToOne(mappedBy = "reservation")
+    private Paiement paiement;
 	  
 }

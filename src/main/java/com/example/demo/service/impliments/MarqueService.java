@@ -1,6 +1,7 @@
 package com.example.demo.service.impliments;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,4 +51,15 @@ public class MarqueService implements IMarque {
     public Marque getMarqueByIdMarque(Long id) { 
         return null;
     }
+    
+    @Override
+    public List<Marque> getAllMarques() {
+        return marqueRepository.findAll();
+    }
+
+    @Override
+    public Optional<Marque> getMarqueById(Long id) {
+        return marqueRepository.findById(id);
+    }
+
 }

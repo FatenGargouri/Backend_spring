@@ -1,6 +1,7 @@
 package com.example.demo.service.impliments;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,4 +52,15 @@ public class VoitureService implements IVoiture {
         // Vous devez implémenter cette méthode selon votre logique métier
         return null;
     }
+    
+    @Override
+    public List<Voiture> getAllVoitures() {
+        return voitureRepository.findAll();
+    }
+
+    @Override
+    public Optional<Voiture> getVoitureById(Long id) {
+        return voitureRepository.findById(id);
+    }
+
 }

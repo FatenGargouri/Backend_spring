@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
@@ -75,6 +77,10 @@ public class Paiement implements Serializable {
 	public void setDate_expiration_carte(LocalDateTime date_expiration_carte) {
 		this.date_expiration_carte = date_expiration_carte;
 	}
+	
+	@OneToOne
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
 
 	
 }

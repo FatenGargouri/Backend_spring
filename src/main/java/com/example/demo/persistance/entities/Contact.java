@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 @Entity
 public class Contact implements Serializable{
 
@@ -29,13 +30,9 @@ public class Contact implements Serializable{
 			this.tel = tel;
 		}
 	  
-	  
-	  
 	  public Contact() {
 		super();
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -86,5 +83,8 @@ public class Contact implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	@ManyToOne
+    private Agence agence;
 	
 }

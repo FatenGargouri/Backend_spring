@@ -1,27 +1,31 @@
 package com.example.demo.persistance.entities;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+
 public class Voiture implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; 
 	private String matricule;
 	private String couleur;
 	private String modele; 
+	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
 	private Date date_fab;
+	
 	private Long prix_location;
 	public Voiture(Long id, String matricule, String couleur, String modele, Date date_fab, Long prix_location) {
 		super();
@@ -32,6 +36,11 @@ public class Voiture implements Serializable{
 		this.date_fab = date_fab;
 		this.prix_location = prix_location;
 	}
+	
+	public Voiture() {
+		super();
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -68,5 +77,16 @@ public class Voiture implements Serializable{
 	public void setPrix_location(Long prix_location) {
 		this.prix_location = prix_location;
 	}
+	@ManyToOne
+    @JoinColumn(name = "agence_id")
+    private Agence agence;
+
+
+ @ManyToOne
+ @JoinColumn(name = "marque_id")
+ private Marque marque;
+ 
+ @OneToMany(mappedBy = "voiture")
+    private List<Reservation> reservations = new ArrayList<>();
 }
 	

@@ -1,6 +1,9 @@
 package com.example.demo.service.interfaces;
 import com.example.demo.persistance.entities.Marque;
+
+
 import java.util.List;
+import java.util.Optional;
 
 public interface IMarque {
 
@@ -11,5 +14,7 @@ public interface IMarque {
     Marque getMarque(Long id);
     Marque findMarquebynomMar(String nomMar);
     Marque getMarqueByIdMarque(Long id);
+	List<Marque> getAllMarques();
+	Optional<Marque> getMarqueById(Long id);
 
 }

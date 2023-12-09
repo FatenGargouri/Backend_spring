@@ -1,6 +1,7 @@
 package com.example.demo.service.impliments;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,4 +55,16 @@ public class AgenceService implements IAgence {
     public Agence getAgenceByIdAgence(Long id) { 
         return null;
     }
+
+	@Override
+	public List<Agence> getAllAgences() {
+		// TODO Auto-generated method stub
+		return agenceRepository.findAll();
+	}
+
+	@Override
+	public Optional<Agence> getAgenceById(Long id) {
+		// TODO Auto-generated method stub
+		return agenceRepository.findById(id);
+	}
 }

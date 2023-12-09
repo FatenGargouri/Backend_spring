@@ -2,29 +2,31 @@ package com.example.demo.persistance.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
+import javax.persistence.OneToMany;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+
 public class Agence implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; 
 	private String nom;
 	private String couladresse;
 	private String tel; 
+	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
 	private Date date_creation;
-	private Long description;
-	public Agence(Long id, String nom, String couladresse, String tel, Date date_creation, Long description) {
+	
+	private String description;
+	public Agence(Long id, String nom, String couladresse, String tel, Date date_creation, String description) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -70,12 +72,17 @@ public class Agence implements Serializable{
 	public void setDate_creation(Date date_creation) {
 		this.date_creation = date_creation;
 	}
-	public Long getDescription() {
+	public String getDescription() {
 		return description;
 	}
-	public void setDescription(Long description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 	
+	@OneToMany(mappedBy = "agence", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Voiture> voitures = new ArrayList<>();
+  
+  @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contact> contacts = new ArrayList<>();
 	
 }
