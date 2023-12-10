@@ -19,7 +19,7 @@ public class Paiement implements Serializable {
 	  private Long montant;
 	  private String type_carte;
 	  private String numero_carte;
-	  @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	  @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	  private LocalDateTime date_expiration_carte;
 	  
 	  

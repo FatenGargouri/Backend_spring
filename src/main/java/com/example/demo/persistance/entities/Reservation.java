@@ -18,9 +18,9 @@ public class Reservation implements Serializable{
 	  @Id 
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
-	  @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	  @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	  private LocalDateTime date_debut;
-	  @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	  @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	  private LocalDateTime date_fin;
 	  
 	  

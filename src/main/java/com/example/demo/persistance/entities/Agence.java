@@ -22,7 +22,7 @@ public class Agence implements Serializable{
 	private String nom;
 	private String couladresse;
 	private String tel; 
-	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	private Date date_creation;
 	
 	private String description;
