@@ -23,11 +23,12 @@ public class Voiture implements Serializable{
 	private String matricule;
 	private String couleur;
 	private String modele; 
-	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	private Date date_fab;
+	private String imageUrl;
 	
 	private Long prix_location;
-	public Voiture(Long id, String matricule, String couleur, String modele, Date date_fab, Long prix_location) {
+	public Voiture(Long id, String matricule, String couleur, String modele, Date date_fab, Long prix_location,String imageUrl) {
 		super();
 		this.id = id;
 		this.matricule = matricule;
@@ -35,10 +36,19 @@ public class Voiture implements Serializable{
 		this.modele = modele;
 		this.date_fab = date_fab;
 		this.prix_location = prix_location;
+		this.imageUrl = imageUrl;
 	}
 	
 	public Voiture() {
 		super();
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Long getId() {

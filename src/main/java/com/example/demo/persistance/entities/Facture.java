@@ -24,7 +24,7 @@ public class Facture implements Serializable{
 	private Long id; 
 	private Long numero;
 	private Long montant;
-	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 	private Date date_facture;
 	public Facture(Long id, Long numero, Long montant , Date date_facture) {
 		super();

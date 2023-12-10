@@ -71,6 +71,7 @@ public class VoitureController {
 	        existingVoiture.setModele(updatedVoiture.getModele());
 	        existingVoiture.setDate_fab(updatedVoiture.getDate_fab());
 	        existingVoiture.setPrix_location(updatedVoiture.getPrix_location());
+	        existingVoiture.setImageUrl(updatedVoiture.getImageUrl());
 
 	        
 	        // Save the updated voiture
