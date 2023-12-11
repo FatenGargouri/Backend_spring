@@ -63,4 +63,17 @@ public class VoitureService implements IVoiture {
         return voitureRepository.findById(id);
     }
 
-}
+    @Override
+    public void reserveVoiture(Voiture voiture) {
+        // Obtenez la voiture à partir de la base de données (vous pouvez utiliser le matricule ou l'ID)
+        Optional<Voiture> voitureOptional = voitureRepository.findById(voiture.getId());
+
+        if (voitureOptional.isPresent()) {
+            Voiture voitureReservee = voitureOptional.get();
+            
+        }
+        
+	
+	
+
+    }}

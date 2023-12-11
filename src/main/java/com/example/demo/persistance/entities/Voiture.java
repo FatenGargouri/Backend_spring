@@ -98,5 +98,10 @@ public class Voiture implements Serializable{
  
  @OneToMany(mappedBy = "voiture")
     private List<Reservation> reservations = new ArrayList<>();
+ 
+public void setReservee(boolean b) {
+	// TODO Auto-generated method stub
+	
+}
 }
 	

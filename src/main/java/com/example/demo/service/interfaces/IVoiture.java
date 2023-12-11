@@ -15,5 +15,6 @@ public interface IVoiture {
     Voiture getVoitureByIdVoiture(Long id);
 	List<Voiture> getAllVoitures();
 	Optional<Voiture> getVoitureById(Long id);
+	void reserveVoiture(Voiture voiture);
 
 }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +36,10 @@ public class VoitureController {
     }
 	
 	@GetMapping("/{id}")
-	Voiture getVoitureById(Long id) {
+	Voiture getVoitureById(@PathVariable Long id) {
         return voitureService.getVoiture(id);
     }
+	
 	
 	@GetMapping("/voitureBycoulour/{couleur}")
 	Voiture getVoitureByCouleur(String couleur) {
@@ -54,6 +56,14 @@ public class VoitureController {
 	List<Voiture> getAllVoitures() {
 	    return voitureService.getAllVoitures();
 	}
+	
+	@PostMapping("/reserver-voiture")
+    public ResponseEntity<Object> reserverVoiture(@RequestBody Voiture voiture) {
+        
+        voitureService.reserveVoiture(voiture);
+
+        return ResponseEntity.ok().build();
+    }
 
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateVoiture(@PathVariable Long id, @RequestBody Voiture updatedVoiture) {
@@ -84,5 +94,6 @@ public class VoitureController {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
+	
 
 }
