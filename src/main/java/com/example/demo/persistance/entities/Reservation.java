@@ -53,19 +53,39 @@ public class Reservation implements Serializable{
 		this.date_fin = date_fin;
 	}
 
-	public Reservation(Long id, LocalDateTime date_debut, LocalDateTime date_fin) {
+	public Reservation(Long id, LocalDateTime date_debut, LocalDateTime date_fin,Client client,Voiture voiture) {
 		super();
 		this.id = id;
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
+		this.client =client;
+		this.voiture =voiture;
 	}
 	
+	public Client getClient() {
+		return client;
+	}
+
+	public Voiture getVoiture() {
+		return voiture;
+	}
+
+	public void setVoiture(Voiture voiture) {
+		this.voiture = voiture;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 	@ManyToOne
     @JoinColumn(name = "voiture_id")
     private Voiture voiture;
+	
+	
   
-  @ManyToOne
-    @JoinColumn(name = "client_id")
+   @ManyToOne
+   @JoinColumn(name = "client_id")
     private Client client;
   
   @OneToOne(mappedBy = "reservation")

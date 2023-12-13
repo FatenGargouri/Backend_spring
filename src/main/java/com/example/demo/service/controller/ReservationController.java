@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.persistance.dao.ClientRepository;
+import com.example.demo.persistance.dao.VoitureRepository;
 import com.example.demo.persistance.entities.Client;
-import com.example.demo.persistance.entities.Reservation; 
+import com.example.demo.persistance.entities.Reservation;
+import com.example.demo.persistance.entities.Voiture;
 import com.example.demo.service.interfaces.IReservation;
 
 
@@ -27,6 +30,9 @@ public class ReservationController {
 
     @Autowired
     IReservation reservationService; // Changed from IPaiement to IReservation
+    
+    private ClientRepository clientRepository;
+    private VoitureRepository voitureRepository;
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     Reservation save(@RequestBody Reservation reservation) { 
@@ -56,7 +62,9 @@ public class ReservationController {
     @GetMapping
     List<Reservation> getAllReservations() {
         return reservationService.getAllReservations();
+        
     }
+ 
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateReservation(@PathVariable Long id, @RequestBody Reservation updatedReservation) {
@@ -80,5 +88,6 @@ public class ReservationController {
                 return ResponseEntity.notFound().build();
             }
         }
-}
+    
 
+}

@@ -28,7 +28,7 @@ public class Voiture implements Serializable{
 	private String imageUrl;
 	
 	private Long prix_location;
-	public Voiture(Long id, String matricule, String couleur, String modele, Date date_fab, Long prix_location,String imageUrl) {
+	public Voiture(Long id, String matricule, String couleur, String modele, Date date_fab, Long prix_location,String imageUrl, Marque marque) {
 		super();
 		this.id = id;
 		this.matricule = matricule;
@@ -37,8 +37,33 @@ public class Voiture implements Serializable{
 		this.date_fab = date_fab;
 		this.prix_location = prix_location;
 		this.imageUrl = imageUrl;
+		this.marque=marque;
 	}
 	
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
+
+	public Marque getMarque() {
+		return marque;
+	}
+
+	public void setMarque(Marque marque) {
+		this.marque = marque;
+	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
 	public Voiture() {
 		super();
 	}
@@ -92,7 +117,8 @@ public class Voiture implements Serializable{
     private Agence agence;
 
 
- @ManyToOne
+ 
+	@ManyToOne
  @JoinColumn(name = "marque_id")
  private Marque marque;
  

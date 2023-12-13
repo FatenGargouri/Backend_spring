@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.persistance.dao.ReservationRepository; 
-import com.example.demo.persistance.entities.Reservation; 
+import com.example.demo.persistance.dao.ReservationRepository;
+import com.example.demo.persistance.entities.Client;
+import com.example.demo.persistance.entities.Reservation;
+import com.example.demo.persistance.entities.Voiture;
 import com.example.demo.service.interfaces.IReservation;
 
 
@@ -62,5 +64,11 @@ public class ReservationService implements IReservation {
     public Optional<Reservation> getReservationById(Long id) {
         return reservationRepository.findById(id);
     }
+
+    
+
+    // Autres dépendances et méthodes du service
+
+    
 
 }

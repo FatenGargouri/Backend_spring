@@ -46,11 +46,17 @@ public class VoitureController {
         return voitureService.findVoitureByCouleur(couleur);
     }
 	
-	@DeleteMapping("/delete/{id}")
-    boolean delete(@PathVariable Long id) {
-		service.deleteVoiture(id);
-        return true;
-    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteVoiture(@PathVariable Long id) {
+	    boolean deleted = voitureService.deleteVoiture(id);
+	    if (deleted) {
+	        return ResponseEntity.ok().build();
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+
+	
 	
 	@GetMapping
 	List<Voiture> getAllVoitures() {

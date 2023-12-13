@@ -3,7 +3,9 @@ package com.example.demo.service.interfaces;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.persistance.entities.Reservation; 
+import com.example.demo.persistance.entities.Client;
+import com.example.demo.persistance.entities.Reservation;
+import com.example.demo.persistance.entities.Voiture; 
 
 public interface IReservation { 
 
@@ -16,5 +18,6 @@ public interface IReservation {
     Reservation getReservationByIdReservation(Long id); 
     List<Reservation> getAllReservations();
     Optional<Reservation> getReservationById(Long id);
+	
 
 }
